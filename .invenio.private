@@ -1,4 +1,4 @@
 [cli]
 services_setup = True
-instance_path = /private/tmp/sample_repository/.venv/var/instance
+instance_path = /home/dusanst/Projects/sample-repository/.venv/var/instance
 
