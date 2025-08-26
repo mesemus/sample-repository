@@ -5,10 +5,10 @@ python_package_manager = uv
 search_port = 9400
 
 [cookiecutter]
-project_name = {{ repository_human_name }}
-project_shortname = {{repository_name}}
-package_name = {{repository_name}}
-project_site = {{repository_name}}.com
+project_name = Sample Repository
+project_shortname = sample_repository
+package_name = sample_repository
+project_site = sample_repository.com
 author_name = 
 author_email = 
 year = 

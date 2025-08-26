@@ -1,0 +1,7 @@
+Metadata:
+  properties:
+    title:
+      type: keyword
+      required: true
+    description:
+      type: keyword

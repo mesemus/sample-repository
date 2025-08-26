@@ -1,0 +1,4 @@
+[cli]
+services_setup = True
+instance_path = /private/tmp/sample_repository/.venv/var/instance
+

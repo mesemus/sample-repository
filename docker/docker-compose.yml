@@ -1,5 +1,5 @@
 version: "3.5"
-name: "{{repository_name}}"
+name: "sample_repository"
 services:
   cache:
     image: redis:7

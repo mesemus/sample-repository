@@ -1,7 +1,7 @@
 [project]
-name = "{{repository_name}}"
+name = "sample_repository"
 version = "1.0.0"
-description = "{{repository_description}}"
+description = "Sample Repository"
 packages = []
 authors = []
 dependencies = [
@@ -28,11 +28,13 @@ requires-python = ">=3.13,<3.14"
 branding = "ui.branding.webpack:theme"
 i18n = "i18n.webpack:theme"
 components = "ui.components.webpack:theme"
+datasets = "ui.datasets.webpack:theme"
 
 [project.entry-points."invenio_base.blueprints"]
 branding = "ui.branding:create_blueprint"
 titlepage = "ui.titlepage:create_blueprint"
 components = "ui.components:create_blueprint"
+datasets = "ui.datasets:create_blueprint"
 
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
@@ -40,9 +42,12 @@ translations = "i18n"
 [project.entry-points."invenio_db.alembic"]
 repository = "common:alembic"
 
+[project.entry-points."invenio_base.finalize_app"]
+datasets_init_menu = "ui.datasets:init_menu"
+
 [tool.uv.build-backend]
 module-root = ""
-module-name = ["common", "i18n", "ui"]
+module-name = ["datasets", "common", "i18n", "ui"]
 
 [build-system]
 requires = ["uv_build>=0.8.7,<0.9.0"]
