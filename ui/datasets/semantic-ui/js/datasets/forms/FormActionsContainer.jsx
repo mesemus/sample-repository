@@ -4,8 +4,6 @@ import {
   PreviewButton,
   SaveButton,
   DeleteButton,
-  AccessRightField,
-  useFormConfig,
   useSanitizeInput,
 } from "@js/oarepo_ui";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
@@ -16,8 +14,6 @@ import { connect } from "react-redux";
 
 const FormActionsContainerComponent = ({ saveAction, setErrorsAction }) => {
   const { values } = useFormikContext();
-  const { permissions, allowRecordRestriction, recordRestrictionGracePeriod } =
-    useFormConfig();
 
   const { sanitizeInput } = useSanitizeInput();
 
@@ -30,48 +26,35 @@ const FormActionsContainerComponent = ({ saveAction, setErrorsAction }) => {
   }
 
   return (
-    <React.Fragment>
-      <Card fluid>
-        {/* <Card.Content>
+    <Card fluid>
+      {/* <Card.Content>
             <DepositStatusBox />
           </Card.Content> */}
-        <Card.Content>
-          <Grid>
-            <Grid.Column width={16}>
-              <div className="flex">
-                <SaveButton fluid className="mb-10" />
-                <PreviewButton fluid className="mb-10" />
-              </div>
-              <DeleteButton redirectUrl="/me/records" />
+      <Card.Content>
+        <Grid>
+          <Grid.Column width={16}>
+            <div className="flex">
+              <SaveButton fluid className="mb-10" />
+              <PreviewButton fluid className="mb-10" />
+            </div>
+            <DeleteButton redirectUrl="/me/records" />
+          </Grid.Column>
+          {repositoryAssignedDoi && (
+            <Grid.Column width={16} className="pt-10">
+              <p>{i18next.t("Assigned DOI:")}</p>
+              <a
+                href={sanitizeInput(repositoryAssignedDoi)}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {repositoryAssignedDoi}
+              </a>{" "}
+              <ClipboardCopyButton copyText={repositoryAssignedDoi} />
             </Grid.Column>
-            {repositoryAssignedDoi && (
-              <Grid.Column width={16} className="pt-10">
-                <p>{i18next.t("Assigned DOI:")}</p>
-                <a
-                  href={sanitizeInput(repositoryAssignedDoi)}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {repositoryAssignedDoi}
-                </a>{" "}
-                <ClipboardCopyButton copyText={repositoryAssignedDoi} />
-              </Grid.Column>
-            )}
-          </Grid>
-        </Card.Content>
-      </Card>
-      <AccessRightField
-        label={i18next.t("metadata/accessRights.label")}
-        record={values}
-        labelIcon="shield"
-        fieldPath="access"
-        showMetadataAccess={permissions?.can_manage_record_access}
-        // permissions seem to not work properly when on /_new, in this case I think it is OK that you can restrict
-        // since you have access to the form
-        recordRestrictionGracePeriod={recordRestrictionGracePeriod}
-        allowRecordRestriction={allowRecordRestriction}
-      />
-    </React.Fragment>
+          )}
+        </Grid>
+      </Card.Content>
+    </Card>
   );
 };
 

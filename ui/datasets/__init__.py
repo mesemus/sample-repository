@@ -26,7 +26,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         AllowedHtmlTagsComponent,
         BabelComponent,
         PermissionsComponent,
-        FilesComponent,
+        # FilesComponent,
         # AllowedCommunitiesComponent,
         CustomFieldsComponent,
         RecordRestrictionComponent,

@@ -9,24 +9,20 @@ import {
 // import { VocabularyField } from "@js/oarepo_vocabularies";
 import { AccordionField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
+import { UppyUploader } from "@js/invenio_rdm_records";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const FormFieldsContainer = () => {
-  const { allowed_file_extensions: allowedFileExtensions } = useFormConfig();
-
+const FormFieldsContainerComponent = ({ record }) => {
+  const { filesLocked } = useFormConfig();
   return (
     <React.Fragment>
-      {/* <CommunitySelector /> */}
       <AccordionField
-        includesPaths={["metadata.title", "metadata.languages"]}
+        includesPaths={["metadata.title"]}
         active
         label={i18next.t("Basic information")}
       >
         <TextField fieldPath="metadata.title" />
-        {/* <VocabularyField
-          fieldPath="metadata.languages"
-          multiple
-          vocabularyName="languages"
-        /> */}
       </AccordionField>
       <AccordionField
         includesPaths={["files.enabled"]}
@@ -36,11 +32,32 @@ const FormFieldsContainer = () => {
         }
         data-testid="filesupload-button"
       >
-        <FilesField allowedFileTypes={allowedFileExtensions} />
+        <UppyUploader
+          isDraftRecord={!record.is_published}
+          // TODO: implement following being sent from BE? They are sending some parameters in separate
+          // hidden inputs and some in config? Not clear based on what they are arranging this
+          // quota={this.config.quota}
+          // decimalSizeDisplay={this.config.decimal_size_display}
+          // allowEmptyFiles={allowEmptyFiles}
+          // fileUploadConcurrency={config.fileUploadConcurrency}
+
+          showMetadataOnlyToggle={false}
+          filesLocked={filesLocked}
+        />
       </AccordionField>
       {process.env.NODE_ENV === "development" && <FormikStateLogger />}
     </React.Fragment>
   );
 };
 
-export default FormFieldsContainer;
+FormFieldsContainerComponent.propTypes = {
+  record: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    record: state.deposit.record,
+  };
+};
+
+export default connect(mapStateToProps)(FormFieldsContainerComponent);
