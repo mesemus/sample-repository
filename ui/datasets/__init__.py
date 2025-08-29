@@ -9,6 +9,7 @@ from oarepo_ui.resources.components import (
     FilesLockedComponent,
     PermissionsComponent,
     RecordRestrictionComponent,
+    FilesQuotaAndTransferComponent,
 )
 from oarepo_ui.resources.components.custom_fields import CustomFieldsComponent
 from oarepo_ui.resources.records.config import RecordsUIResourceConfig
@@ -26,12 +27,13 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         AllowedHtmlTagsComponent,
         BabelComponent,
         PermissionsComponent,
-        # FilesComponent,
+        FilesComponent,
         # AllowedCommunitiesComponent,
         CustomFieldsComponent,
         RecordRestrictionComponent,
         EmptyRecordAccessComponent,
         FilesLockedComponent,
+        FilesQuotaAndTransferComponent,
     )
 
     try:

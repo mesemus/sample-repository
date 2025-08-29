@@ -11,13 +11,6 @@ const recordSerializer = new OARepoDepositSerializer(
 );
 
 const config = parseFormAppConfig();
-config.formConfig.transfer_types = {
-  LOCAL: "L",
-  FETCH: "F",
-  REMOTE: "R",
-  MULTIPART: "M",
-};
-config.formConfig.enabled_transfer_types = ["L"];
 
 const overridableIdPrefix = config.formConfig.overridableIdPrefix;
 
@@ -25,7 +18,6 @@ export const componentOverrides = {
   [`${overridableIdPrefix}.FormFields.container`]: FormFieldsContainer,
   [`${overridableIdPrefix}.FormActions.container`]: FormActionsContainer,
 };
-
 ReactDOM.render(
   <DepositFormApp
     config={config.formConfig}
