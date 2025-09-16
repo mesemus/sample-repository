@@ -1,4 +1,6 @@
 [cli]
 services_setup = True
-instance_path = /private/tmp/sample_repository/.venv/var/instance
+instance_path = /home/dusanst/Projects/sample-repository/.venv/var/instance
+search_port = 9400
+search_host = 127.0.0.1
 

@@ -41,6 +41,9 @@ Sample output:
 /* invenio-theme site.variables */
 @import (optional) "themes/invenio/globals/site.variables";
 
+/* invenio-app-rdm site.variables */
+@import (optional) "themes/rdm/globals/site.variables";
+
 /* Site's global site.variables override just global variables */
 @import (optional) "@{siteFolder}/globals/site.variables";
 
@@ -57,6 +60,9 @@ Sample output:
 
 /* Invenio-theme Theme for a component */
 @import (optional, multiple) "themes/invenio/@{type}s/@{element}.variables";
+
+/* Invenio-App-rdm Theme */
+@import (optional, multiple) "themes/rdm/@{type}s/@{element}.variables";
 
 /* Oarepo-UI components variables */
 @import (optional, multiple)
@@ -114,6 +120,8 @@ Sample output:
 
   /* invenio global css styles */
   @import (optional, multiple) "themes/invenio/@{type}s/@{element}.overrides";
+
+  @import (optional, multiple) "themes/rdm/@{type}s/@{element}.overrides";
 
   @import (optional, multiple)
     "@{siteFolder}/oarepo_ui/themes/@{theme}/@{type}s/@{element}.overrides";

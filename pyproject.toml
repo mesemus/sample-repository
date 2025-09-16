@@ -35,6 +35,12 @@ branding = "ui.branding:create_blueprint"
 titlepage = "ui.titlepage:create_blueprint"
 components = "ui.components:create_blueprint"
 datasets = "ui.datasets:create_blueprint"
+invenio_app_rdm_users = "invenio_app_rdm.users_ui.views:create_ui_blueprint"
+invenio_app_rdm_communities = "invenio_app_rdm.communities_ui.views:create_ui_blueprint"
+
+[project.entry-points."invenio_base.api_blueprints"]
+invenio_rdm_community_records = "invenio_rdm_records.views:create_community_records_bp"
+
 
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
@@ -44,6 +50,7 @@ repository = "common:alembic"
 
 [project.entry-points."invenio_base.finalize_app"]
 datasets_init_menu = "ui.datasets:init_menu"
+rdm_init_menu = "invenio_app_rdm.ext:init_menu"
 
 [tool.uv.build-backend]
 module-root = ""
