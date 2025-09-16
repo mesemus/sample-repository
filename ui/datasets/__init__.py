@@ -20,7 +20,7 @@ from oarepo_ui.utils import can_view_deposit_page
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "templates"
     url_prefix = "/datasets"
-    blueprint_name = "datasets"
+    blueprint_name = "datasets_ui"
     model_name = "datasets"
 
     components = (
